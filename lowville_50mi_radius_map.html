@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Lowville, NY — 50-mile Radius</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    html, body, #map { height: 100%; margin: 0; }
+    .info-box { position: absolute; top: 10px; left: 10px; background: white; padding: 8px 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="info-box">
+    <strong>Lowville, NY</strong><br/>
+    50-mile (≈ 80 km) radius<br/>
+    Generated 2025-11-04 18:11:17
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([43.786736, -75.4918505], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    var circle = L.circle([43.786736, -75.4918505], {
+      radius: 80467.2,
+      color: 'red',
+      weight: 2,
+      fillColor: 'red',
+      fillOpacity: 0.15
+    }).addTo(map);
+    L.marker([43.786736, -75.4918505]).addTo(map).bindPopup('Lowville, NY');
+    // Fit map to circle bounds
+    map.fitBounds(circle.getBounds(), { padding: [20, 20] });
+  </script>
+</body>
+</html>
